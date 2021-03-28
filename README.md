@@ -15,9 +15,9 @@ npm install && npm start
 
 
 ### Deployed client on Netlify
-
+https://register-user-app.netlify.app/
 ### Deployed server on Heroku 
-
+https://register-user-api.herokuapp.com/
 
 
 
