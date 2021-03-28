@@ -1,5 +1,6 @@
 const User = require("../models/User");
 
+// check user email is exist or not
 exports.checkUserEmail = async (req, res, next) => {
   // Email
   const user = await User.findOne({
@@ -18,6 +19,7 @@ exports.checkUserEmail = async (req, res, next) => {
   next();
 };
 
+// check user id exist or not
 exports.checkUserId = async (req, res, next) => {
   const { id } = req.params;
   const user = await User.findOne({
@@ -27,7 +29,7 @@ exports.checkUserId = async (req, res, next) => {
   });
 
   if (!user) {
-     res.status(400).send({
+    res.status(400).send({
       message: `No user found with the id ${id}`,
     });
     return;

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import "./login.css";
 import LoginForm from "./LoginForm";
 import { Link, useHistory } from "react-router-dom";
-import {client} from "../../utils/auth";
-
-const { REACT_APP_LOCALHOST } = process.env;
+import { client } from "../../utils/auth";
 
 const initialValues = {
   email: "",
@@ -16,13 +13,13 @@ const Login = () => {
   const [error, setError] = useState({});
   const history = useHistory();
 
+  // Get token from server after successfull login
   const onLogin = async (credentials) => {
     try {
       const response = await client.post("/auth/login", {
         ...credentials,
       });
       const token = response.data.accessToken;
-      console.log(token);
       if (token) {
         localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN, token);
         return true;
@@ -30,7 +27,9 @@ const Login = () => {
         throw new Error(`Login failed`);
       }
     } catch (e) {
-      e.response ? setError(e.response.data.error) : setError({network : e.message});
+      e.response
+        ? setError(e.response.data.message)
+        : setError({ network: e.message });
       return false;
     }
   };
@@ -42,6 +41,7 @@ const Login = () => {
     }));
   };
 
+  // authorized user redirect to dashboard
   const handleAuthentication = async (e) => {
     e.preventDefault();
     const isAuthenticated = await onLogin(credentials);
@@ -49,6 +49,7 @@ const Login = () => {
       history.push("/dashboard");
     }
   };
+
   return (
     <>
       <div className="form_container">

@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import UserReducer from "./UserReducer";
-import {client} from "../utils/auth";
+import { client } from "../utils/auth";
 
 // Initial State
 const initialState = {
@@ -19,20 +19,20 @@ export const UserProvider = (props) => {
 
   // Actions
   const createUser = async (body) => {
-      try {
-        dispatch({ type: "FATCH_DATA" });
-        const res = await client.post('user/add', body);
-        
-        if (res.status === 200) {
-          dispatch({ type: "CREATE_USER_SUCCESS", payload: res.data.success});
-          const token = res.data.accessToken;
-          if(token){
-            localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN, token);
-            return true;
-          }
+    try {
+      dispatch({ type: "FATCH_DATA" });
+      const res = await client.post("user/add", body);
+
+      if (res.status === 200) {
+        dispatch({ type: "CREATE_USER_SUCCESS", payload: res.data.success });
+        const token = res.data.accessToken;
+        if (token) {
+          localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN, token);
+          return true;
         }
+      }
     } catch (e) {
-      dispatch({ type: "ERROR", payload: e.response.data.message});
+      dispatch({ type: "ERROR", payload: e.response.data.message });
       return false;
     }
   };
@@ -40,13 +40,13 @@ export const UserProvider = (props) => {
   const getUsers = async () => {
     try {
       dispatch({ type: "FATCH_DATA" });
-      const res = await client.get('user/all');
+      const res = await client.get("user/all");
       if (res.status === 200) {
         dispatch({ type: "GET_ALL_SUCCESS", payload: res.data });
       }
     } catch (e) {
       console.log(e.response.data.message);
-      dispatch({ type: "ERROR", payload: e.response.data.message })
+      dispatch({ type: "ERROR", payload: e.response.data.message });
     }
   };
 
@@ -76,7 +76,6 @@ export const UserProvider = (props) => {
     }
   };
 
-
   return (
     <UserContext.Provider
       value={{
@@ -93,4 +92,3 @@ export const UserProvider = (props) => {
     </UserContext.Provider>
   );
 };
-

@@ -20,6 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
+// render user data on Dashboard
 const UserDashboard = ({ onLogout }) => {
   const { getUsers, state, deleteUser } = useContext(UserContext);
   const classes = useStyles();

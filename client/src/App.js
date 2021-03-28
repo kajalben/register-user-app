@@ -5,7 +5,7 @@ import Main from "./components/Main/Main";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
-import { setAuthHeaders, logout } from "./utils/auth";
+import { checkAuth, logout } from "./utils/auth";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -16,13 +16,13 @@ function App() {
     history.push("/auth");
   };
 
+  // check user authentification and redirect to dashboard
   useEffect(() => {
-    setAuthHeaders() && history.push("/dashboard");
+    checkAuth() && history.push("/dashboard");
   }, [history]);
 
   return (
     <div className="app">
-      
       <UserProvider>
         <Main>
           <Switch>

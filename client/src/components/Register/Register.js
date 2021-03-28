@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./register.css";
 import RegisterForm from "./RegisterForm";
 import { UserContext } from "../../context/UserContext";
 import { useParams, useHistory } from "react-router-dom";
@@ -12,7 +11,8 @@ const initialValues = {
   password: "",
 };
 
-const Signup = () => {
+// render form for user registration or edit selected user
+const Register = () => {
   const { id } = useParams();
   const history = useHistory();
   const [values, setValues] = useState(initialValues);
@@ -39,6 +39,7 @@ const Signup = () => {
     }
   }, []);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = {
@@ -75,4 +76,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;

@@ -14,7 +14,9 @@ npm install && npm start
 npm install && npm start
 
 
-### Deployed project on netlify 
+### Deployed client on Netlify
+
+### Deployed server on Heroku 
 
 
 

@@ -69,7 +69,7 @@ exports.deleteUser = async (req, res) => {
 
   try {
     const users = await User.destroy({ where: { id } });
-    res.send({message : "User is deleted"});
+    res.send({ message: "User is deleted" });
   } catch (e) {
     res.status(500).send({
       message: e.message,
