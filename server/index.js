@@ -18,9 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // -----routes----
 app.use('/user', userRouter);
 app.use('/auth', authenticationRouter);
-app.use('/', (req, res) =>{
-  res.send('Welcome to Resister User API');
-});
+
 
 // -----server-----
 const PORT = process.env.PORT || 3000;

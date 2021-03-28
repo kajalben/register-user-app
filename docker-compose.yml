@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+  doc_container_1:
+    container_name: doc_container_1
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      REACT_APP_ACCESS_TOKEN: REGISTER_USER_ACCESS_TOKEN
+    volumes:
+      - './client:/app'
+      - '/app/node_modules'
+    ports:
+      - 3001:3000
+
+  doc_container_2:
+    container_name: doc_container_2
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - './server:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      DB_CONNECTION: postgres://mnyrnrld:HbQBTT7KrtUsWprjYTInsMa8hlZ1Xa9E@dumbo.db.elephantsql.com:5432/mnyrnrld
+      JWT_SECRET: 2485f23d67fb78483ac8d03b34bd958c1f5ac7d2202c8e1df4cc78bdf75e9ca79eb38f8d4c7d6fbf37992deb437f7769d953563891e4322049837e9f74c8498f
+      PORT: 3000
+    ports:
+      - '3000:3000'
+

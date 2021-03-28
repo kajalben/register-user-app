@@ -6,10 +6,13 @@ const login = async (req, res, next) => {
 
   let user = await User.findOne({ where: { email } });
   if (!user)
-    return res.status(400).send({ error: { email: "Invalid Credentials" } });
+    return res.status(400).send({ message: { email: "Email is not valid" } });
   const match = await bcrypt.compare(password, user.password);
 
-  if (!match) return res.status(400).send({ error: { password: "Invalid Credentials" } });
+  if (!match)
+    return res
+      .status(400)
+      .send({ message: { password: "Password is not valid" } });
   const token = User.createToken(user.id, user.email);
 
   res.send({ accessToken: token });

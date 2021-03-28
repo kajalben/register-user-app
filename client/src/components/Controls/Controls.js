@@ -1,11 +1,9 @@
 import Input from "./Input";
-import Button from './Button';
-import RadioGroup from './RadioGroup';
+import Button from "./Button";
 
 const Controls = {
-    Input,
-    Button,
-    RadioGroup
-}
+  Input,
+  Button,
+};
 
 export default Controls;

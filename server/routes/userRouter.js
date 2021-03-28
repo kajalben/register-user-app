@@ -6,11 +6,12 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userController");
-const authorize = require('../middlewares/authorizeUser')
+const { checkUserEmail, checkUserId } = require("../middlewares/checkUser");
 
-router.get("/all", authorize, listUsers);
-router.post("/add", createUser);
+// Crud operation for user model
+router.get("/all", listUsers);
+router.post("/add", checkUserEmail, createUser);
 router.put("/edit/:id", updateUser);
-router.delete("/delete/:id", deleteUser);
+router.delete("/delete/:id", checkUserId, deleteUser);
 
 module.exports = router;

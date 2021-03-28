@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useEffect, useContext } from "react";
 import "./user_dashboard.css";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -8,18 +8,19 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Button,
 } from "@material-ui/core";
+import Controls from "../Controls/Controls";
 import Paper from "@material-ui/core/Paper";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 650
   },
 });
 
+// render user data on Dashboard
 const UserDashboard = ({ onLogout }) => {
   const { getUsers, state, deleteUser } = useContext(UserContext);
   const classes = useStyles();
@@ -29,29 +30,26 @@ const UserDashboard = ({ onLogout }) => {
   }, []);
 
   const DeleteUser = async (id) => {
-    if (window.confirm("Are you sure you want to delete this user")) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
       await deleteUser(id);
       getUsers();
     }
   };
 
   return (
-    <div className="dashboard-container">
-      <Button
+    <div className="dashboard-container" >
+      <Controls.Button
+        text="Logout"
         variant="outlined"
         color="primary"
         onClick={onLogout}
-        className="logout-btn"
-      >
-        Logout
-      </Button>
-      {console.log(state.success != null)}
+      />
 
       <TableContainer component={Paper}>
-        <Table className={classes.table} >
+        <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
+              <TableCell>No</TableCell>
               <TableCell align="left">First Name</TableCell>
               <TableCell align="left">Last name</TableCell>
               <TableCell align="left">Email</TableCell>
@@ -60,10 +58,10 @@ const UserDashboard = ({ onLogout }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {state.users.map((user) => (
+            {state.users.map((user, index) => (
               <TableRow key={user.id}>
                 <TableCell component="th" scope="row">
-                  {user.id}
+                  {index+1}
                 </TableCell>
                 <TableCell align="left">{user.first_name}</TableCell>
                 <TableCell align="left">{user.last_name}</TableCell>
