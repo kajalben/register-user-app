@@ -1,11 +1,8 @@
  .dashboard-container{
-     /* width:700px; */
+     width: 670px;
      margin-top: 1rem;
+     overflow-x: auto;
  }
-
-.logout-btn{
-    margin-bottom: 1rem;
-}
 
 .user-icon{
     font-size: 1.2rem;
@@ -13,4 +10,6 @@
 
 .delete-icon{
     color: brown;
+    cursor: pointer;
 }
+

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Signup from "./components/Signup/Signup";
+import React, { useEffect } from "react";
+import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Main from "./components/Main/Main";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
@@ -35,10 +35,10 @@ function App() {
               onLogout={handleLogout}
             />
             <Route exact path="/registration/:id">
-              <Signup />
+              <Register />
             </Route>
             <Route exact path="/registration">
-              <Signup />
+              <Register />
             </Route>
             <Route path="/">
               <Redirect to="/auth" />

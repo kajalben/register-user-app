@@ -6,12 +6,12 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userController");
-const {checkUser} = require("../middlewares/checkUser");
+const {checkUserEmail, checkUserId} = require("../middlewares/checkUser");
 
 
 router.get("/all", listUsers);
-router.post("/add", checkUser, createUser);
-router.put("/edit/:id",checkUser, updateUser);
-router.delete("/delete/:id", deleteUser);
+router.post("/add", checkUserEmail, createUser);
+router.put("/edit/:id", updateUser);
+router.delete("/delete/:id",checkUserId, deleteUser);
 
 module.exports = router;

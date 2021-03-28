@@ -19,7 +19,6 @@ const LoginForm = ({ onAuth, onSetCredentials,error }) => {
         <Grid item xs={12}>
           <Controls.Input
             label="Email"
-            // value={values.email}
             name="email"
             onChange={onSetCredentials}
             error={error && error.email}
@@ -28,7 +27,6 @@ const LoginForm = ({ onAuth, onSetCredentials,error }) => {
         <Grid item xs={12}>
           <Controls.Input
             label="Password"
-            // value={values.password}
             name="password"
             onChange={onSetCredentials}
             error={error && error.password}

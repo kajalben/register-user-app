@@ -32,7 +32,7 @@ export const UserProvider = (props) => {
           }
         }
     } catch (e) {
-      dispatch({ type: "ERROR", payload: e.response.data.error});
+      dispatch({ type: "ERROR", payload: e.response.data.message});
       return false;
     }
   };
@@ -45,7 +45,8 @@ export const UserProvider = (props) => {
         dispatch({ type: "GET_ALL_SUCCESS", payload: res.data });
       }
     } catch (e) {
-      dispatch({ type: "ERROR", payload: e.response.data.error })
+      console.log(e.response.data.message);
+      dispatch({ type: "ERROR", payload: e.response.data.message })
     }
   };
 
@@ -57,7 +58,7 @@ export const UserProvider = (props) => {
         dispatch({ type: "DELETE_USER_SUCCESS" });
       }
     } catch (e) {
-      dispatch({ type: "ERROR", payload: e.response.data.error });
+      dispatch({ type: "ERROR", payload: e.response.data.message });
     }
   };
 
@@ -70,7 +71,7 @@ export const UserProvider = (props) => {
         return true;
       }
     } catch (e) {
-      dispatch({ type: "ERROR", payload: e.response.data.error });
+      dispatch({ type: "ERROR", payload: e.response.data.message });
       return false;
     }
   };

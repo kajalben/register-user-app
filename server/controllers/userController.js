@@ -66,22 +66,6 @@ exports.updateUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   const { id } = req.params;
-  if (!id) {
-    return res.status(400).send({
-      message: "Please provide a id for the user you are trying to delete!",
-    });
-  }
-  const user = await User.findOne({
-    where: {
-      id,
-    },
-  });
-
-  if (!user) {
-    res.status(400).send({
-      message: `No user found with the id ${id}`,
-    });
-  }
 
   try {
     const users = await User.destroy({ where: { id } });

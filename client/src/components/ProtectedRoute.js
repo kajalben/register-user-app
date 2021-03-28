@@ -2,6 +2,7 @@ import React from "react";
 import { decodeToken} from '../utils/auth';
 import { Route, Redirect } from "react-router-dom";
 
+
 const ProtectedRoute = ({ component: Component, path, onLogout }) => {
   return (
     <Route

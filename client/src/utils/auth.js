@@ -1,26 +1,21 @@
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
-const { REACT_APP_BACKEND_API_HEROKU, REACT_APP_ACCESS_TOKEN} = process.env;
-
-// if (process.env.NODE_ENV === "production") {
-//     axios.defaults.baseURL = REACT_APP_BACKEND_API_HEROKU
-// } else {
-//   axios.defaults.baseURL = 'http://localhost:3000';
-// }
+const { REACT_APP_ACCESS_TOKEN} = process.env;
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
 const setAuthHeaders = () => {
   const token = localStorage.getItem(REACT_APP_ACCESS_TOKEN);
   if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     return true;
   } else {
     return false;
   }
 };
 
+//check JSON web token 
 const decodeToken = () => {
   const token = localStorage.getItem(REACT_APP_ACCESS_TOKEN);
   let decodedToken;
@@ -33,6 +28,7 @@ const decodeToken = () => {
   }
   return decodedToken;
 };
+
 
 const logout = () => {
   localStorage.removeItem(REACT_APP_ACCESS_TOKEN);
