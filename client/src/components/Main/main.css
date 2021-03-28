@@ -1,0 +1,20 @@
+ .main-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+ }
+
+ .form_container{
+   margin-top: 2rem;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .btn-center{
+    display: flex;
+    justify-content: center;
+    padding: 1rem; 
+}

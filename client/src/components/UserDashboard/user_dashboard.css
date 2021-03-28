@@ -1,0 +1,16 @@
+ .dashboard-container{
+     /* width:700px; */
+     margin-top: 1rem;
+ }
+
+.logout-btn{
+    margin-bottom: 1rem;
+}
+
+.user-icon{
+    font-size: 1.2rem;
+}
+
+.delete-icon{
+    color: brown;
+}
